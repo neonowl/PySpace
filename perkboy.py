@@ -28,3 +28,9 @@ SPECIAL = get_stat_names(soup)
 
 for name in SPECIAL:
     print(name)
+
+# TO-DO
+# 
+# Parse the perks
+# Display the perks
+# Store the perks in a file
