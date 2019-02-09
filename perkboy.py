@@ -30,17 +30,25 @@ def get_perk_names(soup_object):
             perks.append(name.text)
     return perks
 
+def perks_by_stat(soup_object):
+    stat_names = soup_object.find_all("span", class_="mw-headline")
+    del stat_names[0:2]
+    perk_table = soup_object("table")[5:12]
+    perk_dict = {}
+    for stat,table in zip(stat_names,perk_table):
+        perk_dict[stat.text] = {}
+        perk_names = table.find_all("a")
+        for name in perk_names:
+            perk_dict[stat.text][name.text] = {}
+    return perk_dict
+
 soup = souper('https://fallout.gamepedia.com/Fallout_76_perks')
 
-SPECIAL = get_stat_names(soup)
+all_perks = perks_by_stat(soup)
 
-all_perks = get_perk_names(soup)
-
-for perk in all_perks:
-    print(perk)
+print(str(all_perks))
 
 # TO-DO
 # 
-# List perks by their SPECIAL stat
-# Display perk info
-# Write perks to a file
+# Perk descriptions & ranks
+# Write data to a file
