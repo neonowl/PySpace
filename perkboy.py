@@ -1,4 +1,4 @@
-# Fallout 76 Perk Scraping Script
+# Fallout 76 Perk Viewer
 # Work in progress...
 
 import bs4
@@ -50,5 +50,4 @@ print(str(all_perks))
 
 # TO-DO
 # 
-# Perk descriptions & ranks
-# Write data to a file
+# Output individual perk descriptions & ranks
