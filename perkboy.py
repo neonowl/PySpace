@@ -11,7 +11,7 @@ def souper(url):
     soup = bs4.BeautifulSoup(res.text, 'html.parser')
     return soup
 
-# Parse SPECIAL stat names
+# List SPECIAL stat names
 def get_stat_names(soup_object):
     stats = []
     stat_names = soup_object.find_all("span", class_="mw-headline")
@@ -20,7 +20,7 @@ def get_stat_names(soup_object):
         stats.append(name.text)
     return stats
 
-# Parse the perk names
+# List the perk names
 def get_perk_names(soup_object):
     perks = []
     perk_table = soup_object("table")[5:12]
@@ -30,6 +30,7 @@ def get_perk_names(soup_object):
             perks.append(name.text)
     return perks
 
+# List perk names by correspoding SPECIAL stat
 def perks_by_stat(soup_object):
     stat_names = soup_object.find_all("span", class_="mw-headline")
     del stat_names[0:2]
